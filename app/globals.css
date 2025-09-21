@@ -1,34 +1,47 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+@import "tailwindcss";
+@import "tw-animate-css";
 
+/* Helper for dark mode (as provided) */
 @custom-variant dark (&:is(.dark *));
 
+/* ============================= Theme Tokens (unchanged) ============================= */
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
+
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
+
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
+
   --primary: oklch(0.205 0 0);
   --primary-foreground: oklch(0.985 0 0);
+
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
+
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
+
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
+
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
+
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
+
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
+
   --radius: 0.625rem;
+
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -42,41 +55,44 @@
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
+
   --card: oklch(0.145 0 0);
   --card-foreground: oklch(0.985 0 0);
+
   --popover: oklch(0.145 0 0);
   --popover-foreground: oklch(0.985 0 0);
+
   --primary: oklch(0.985 0 0);
   --primary-foreground: oklch(0.205 0 0);
+
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
+
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
+
   --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
+
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
+
   --border: oklch(0.269 0 0);
   --input: oklch(0.269 0 0);
   --ring: oklch(0.439 0 0);
+
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
 }
 
+/* Tailwind v4 inline theme hooks */
 @theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-geist-sans, ui-sans-serif, system-ui);
+  --font-mono: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -96,93 +112,110 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* ============================= Base ============================= */
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
+  * { @apply border-border outline-ring/50; }
   body {
     @apply bg-background text-foreground;
     line-height: 1.4;
     letter-spacing: 0.2px;
+    font-family: var(--font-sans);
   }
-  h1 {
-    font-size: clamp(1.5rem, 2vw + 1rem, 2.5rem);
-    margin-bottom: 0.5rem;
-  }
-  h2, h3, h4 {
-    font-size: clamp(1.2rem, 1vw + 0.8rem, 1.8rem);
-    margin-bottom: 0.5rem;
-  }
-  p {
-    font-size: clamp(0.9rem, 1vw + 0.6rem, 1.1rem);
-    line-height: 1.3;
-    margin-bottom: 0.3rem;
-  }
+  h1 { font-size: clamp(1.4rem, 1.1rem + 1.5vw, 2.4rem); margin-bottom: 0.5rem; }
+  h2, h3, h4 { font-size: clamp(1.1rem, 0.9rem + 0.9vw, 1.8rem); margin-bottom: 0.5rem; }
+  p { font-size: clamp(0.95rem, 0.85rem + 0.3vw, 1.05rem); line-height: 1.35; margin-bottom: 0.3rem; }
 }
 
-/* =============================
-   Chat Styling (ChatGPT-like, Equal Sizes)
-============================= */
+/* ============================= Chat Styling (auto for all devices) ============================= */
 .chat-container {
-  max-width: 600px;
-  width: 100%;
-  margin: auto;
-  padding: 1rem;
+  /* Fluid width with container queries enabled */
+  container-type: inline-size;
+  width: min(100%, 72rem);
+  max-height: 100dvh;
+  margin-inline: auto;
+  padding-inline: max(0.5rem, env(safe-area-inset-left));
+  padding-inline-end: max(0.5rem, env(safe-area-inset-right));
+  padding-block: clamp(0.5rem, 1.2vw, 1rem);
   display: flex;
   flex-direction: column;
-  gap: 8px; /* equal spacing */
+  gap: clamp(4px, 0.6vw, 10px);
 }
 
+/* Core message block with fluid sizing */
 .message {
-  padding: 10px 14px;       /* same padding for both */
-  border-radius: 0.75rem;
-  max-width: 80%;           /* same width */
-  font-size: 15px;
-  line-height: 1.5;
+  padding: clamp(8px, 0.6rem + 0.2vw, 12px) clamp(12px, 0.9rem + 0.3vw, 16px);
+  border-radius: var(--radius-lg);
+  /* Width scales with container: prevent overly wide lines on desktop */
+  max-width: clamp(72%, 68cqi, 84%);
+  font-size: clamp(0.9rem, 0.86rem + 0.25vw, 1rem);
+  line-height: 1.4;
   word-wrap: break-word;
   white-space: pre-wrap;
+  border: 1px solid var(--border);
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.03);
 }
 
-/* User and Bot same bubble size, only colors differ */
+/* Role colors only, same geometry */
 .message.user {
-  background: #0078ff;
-  color: #fff;
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
   align-self: flex-end;
-  border-bottom-right-radius: 0.4rem;
+  border-bottom-right-radius: var(--radius-sm);
 }
 
 .message.bot {
-  background: #e5e5ea;
-  color: #111;
+  background: var(--color-secondary);
+  color: var(--color-secondary-foreground);
   align-self: flex-start;
-  border-bottom-left-radius: 0.4rem;
+  border-bottom-left-radius: var(--radius-sm);
 }
 
-@media (max-width: 768px) {
-  .chat-container {
-    padding: 0.5rem;
-  }
-  .message {
-    font-size: 0.9rem;
-    padding: 8px 12px; /* shrink proportionally */
-  }
+/* Rich text inside messages */
+.message p { margin: 0.25rem 0; line-height: 1.45; }
+.message ul, .message ol { margin: 0.25rem 0 0.25rem 1rem; }
+.message code, .message pre {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--popover);
+  color: var(--popover-foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+.message code { padding: 0.15rem 0.35rem; }
+.message pre  { padding: 0.6rem 0.7rem; overflow: auto; max-height: 40dvh; }
+
+/* Tighter spacing for consecutive messages */
+.chat-container .message + .message { margin-top: 2px; }
+
+/* ============================= Container Queries ============================= */
+/* Narrow chat panels (e.g., split views or small phones) */
+@container (max-width: 420px) {
+  .message { max-width: 92%; font-size: 0.92rem; }
+}
+
+/* Typical phones */
+@container (min-width: 421px) and (max-width: 600px) {
+  .message { max-width: 90%; }
+}
+
+/* Tablets */
+@container (min-width: 601px) and (max-width: 900px) {
+  .message { max-width: 86%; }
+}
+
+/* Large desktops can afford a slightly narrower line for legibility */
+@container (min-width: 1200px) {
+  .message { max-width: 70%; }
+}
+
+/* ============================= Accessibility ============================= */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
 }
