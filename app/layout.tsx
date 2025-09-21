@@ -12,7 +12,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "AI Assistant Hub",
-  description: "Feature-based chat application powered by Google Gemini AI",
+  description: "Chatbot application powered by Google Gemini APIKEY",
   generator: "v0.app",
 }
 
