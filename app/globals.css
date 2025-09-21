@@ -121,7 +121,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    line-height: 1.4; /* tighter line spacing */
+    line-height: 1.4;
     letter-spacing: 0.2px;
   }
   h1 {
@@ -139,7 +139,9 @@
   }
 }
 
-/* Chat container + message styles */
+/* =============================
+   Chat Styling (ChatGPT-like)
+============================= */
 .chat-container {
   max-width: 600px;
   width: 100%;
@@ -147,23 +149,31 @@
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  gap: 8px; /* consistent spacing between messages */
 }
+
 .message {
-  margin: 0.2rem 0;
-  padding: 0.4rem 0.8rem;
+  padding: 10px 14px; /* ChatGPT-like bubble padding */
   border-radius: 0.75rem;
   max-width: 80%;
+  font-size: 15px;
+  line-height: 1.5;
   word-wrap: break-word;
+  white-space: pre-wrap;
 }
+
 .message.user {
   background: #0078ff;
   color: #fff;
   align-self: flex-end;
+  border-bottom-right-radius: 0.4rem;
 }
+
 .message.bot {
   background: #e5e5ea;
   color: #111;
   align-self: flex-start;
+  border-bottom-left-radius: 0.4rem;
 }
 
 @media (max-width: 768px) {
@@ -172,6 +182,6 @@
   }
   .message {
     font-size: 0.9rem;
-    padding: 0.5rem 0.8rem;
+    padding: 8px 12px;
   }
 }
