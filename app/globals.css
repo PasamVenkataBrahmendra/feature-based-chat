@@ -140,7 +140,7 @@
 }
 
 /* =============================
-   Chat Styling (ChatGPT-like)
+   Chat Styling (ChatGPT-like, Equal Sizes)
 ============================= */
 .chat-container {
   max-width: 600px;
@@ -149,19 +149,20 @@
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 8px; /* consistent spacing between messages */
+  gap: 8px; /* equal spacing */
 }
 
 .message {
-  padding: 10px 14px; /* ChatGPT-like bubble padding */
+  padding: 10px 14px;       /* same padding for both */
   border-radius: 0.75rem;
-  max-width: 80%;
+  max-width: 80%;           /* same width */
   font-size: 15px;
   line-height: 1.5;
   word-wrap: break-word;
   white-space: pre-wrap;
 }
 
+/* User and Bot same bubble size, only colors differ */
 .message.user {
   background: #0078ff;
   color: #fff;
@@ -182,6 +183,6 @@
   }
   .message {
     font-size: 0.9rem;
-    padding: 8px 12px;
+    padding: 8px 12px; /* shrink proportionally */
   }
 }
