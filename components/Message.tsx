@@ -14,15 +14,15 @@ export function Message({ message, isStreaming = false }: MessageProps) {
   return (
     <div
       className={cn(
-        "flex gap-2 sm:gap-3 max-w-3xl px-2 py-1", // ✅ reduced gap + padding for tighter look
+        "flex gap-1 sm:gap-2 max-w-3xl px-1 sm:px-2 py-1", // tighter gap & padding
         isUser ? "ml-auto flex-row-reverse" : "mr-auto"
       )}
     >
       {/* Avatar */}
       <div
         className={cn(
-          "flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center", // ✅ smaller avatar on mobile
-          isUser ? "bg-purple-600 text-white" : "bg-gray-200 text-gray-600",
+          "flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center", // smaller avatar
+          isUser ? "bg-purple-600 text-white" : "bg-gray-200 text-gray-600"
         )}
       >
         {isUser ? <UserIcon className="w-4 h-4" /> : <BotIcon className="w-4 h-4" />}
@@ -31,13 +31,13 @@ export function Message({ message, isStreaming = false }: MessageProps) {
       {/* Message Content */}
       <div
         className={cn(
-          "flex-1 max-w-[80%] sm:max-w-md md:max-w-lg lg:max-w-xl", // ✅ ensures chat adapts to screen size
+          "flex-1 max-w-[70%] sm:max-w-[80%] md:max-w-lg lg:max-w-xl", // controlled width for tighter layout
           isUser ? "text-right" : "text-left"
         )}
       >
         <div
           className={cn(
-            "inline-block px-3 py-2 rounded-2xl text-sm leading-6 whitespace-pre-wrap break-words", // ✅ reduced padding & line height
+            "inline-block px-2 sm:px-3 py-1.5 rounded-2xl text-sm leading-5 whitespace-pre-wrap break-words", // tighter line-height & padding
             isUser
               ? "bg-purple-600 text-white rounded-br-md"
               : "bg-white text-gray-900 border border-gray-200 rounded-bl-md shadow-sm"
@@ -59,7 +59,7 @@ export function Message({ message, isStreaming = false }: MessageProps) {
         {/* Timestamp */}
         <div
           className={cn(
-            "text-[10px] sm:text-xs text-gray-400 mt-0.5", // ✅ smaller timestamp & tighter margin
+            "text-[9px] sm:text-[10px] text-gray-400 mt-0.25", // smaller timestamp + tighter margin
             isUser ? "text-right" : "text-left"
           )}
         >
