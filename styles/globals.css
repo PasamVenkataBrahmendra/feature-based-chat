@@ -121,5 +121,57 @@
   }
   body {
     @apply bg-background text-foreground;
+    line-height: 1.4; /* tighter line spacing */
+    letter-spacing: 0.2px;
+  }
+  h1 {
+    font-size: clamp(1.5rem, 2vw + 1rem, 2.5rem);
+    margin-bottom: 0.5rem;
+  }
+  h2, h3, h4 {
+    font-size: clamp(1.2rem, 1vw + 0.8rem, 1.8rem);
+    margin-bottom: 0.5rem;
+  }
+  p {
+    font-size: clamp(0.9rem, 1vw + 0.6rem, 1.1rem);
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+}
+
+/* Chat container + message styles */
+.chat-container {
+  max-width: 600px;
+  width: 100%;
+  margin: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.message {
+  margin: 0.4rem 0;
+  padding: 0.6rem 1rem;
+  border-radius: 0.75rem;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+.message.user {
+  background: #0078ff;
+  color: #fff;
+  align-self: flex-end;
+}
+.message.bot {
+  background: #e5e5ea;
+  color: #111;
+  align-self: flex-start;
+}
+
+@media (max-width: 768px) {
+  .chat-container {
+    padding: 0.5rem;
+  }
+  .message {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
   }
 }
